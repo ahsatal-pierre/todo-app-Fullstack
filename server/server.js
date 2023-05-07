@@ -76,6 +76,24 @@ app.get('/todos', (req, res) => {
     });
   });
 
+  // PUT /api/todos/:id - Update a todo
+  app.put('/:id', (req, res) => {
+    const { id } = req.params;
+    const { title, content, completed } = req.body;
+  
+    connection.query(
+      'UPDATE todos SET completed = ? WHERE id = ?',
+      [completed, id],
+      (err) => {
+        if (err) {
+          console.error('Error updating todo in the database: ', err);
+          res.status(500).json({ error: 'Failed to update todo' });
+        } else {
+          res.status(200).json({ message: 'Todo updated successfully' });
+        }
+      }
+    );
+  });
 
 
 
