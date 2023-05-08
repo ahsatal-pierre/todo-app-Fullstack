@@ -76,7 +76,25 @@ app.get('/todos', (req, res) => {
     });
   });
 
-  // PUT /api/todos/:id - Update a todo
+  // GET /todos/:id - Get a specific todo
+app.get('/todos/:id', (req, res) => {
+  const { id } = req.params;
+
+  connection.query('SELECT * FROM todos WHERE id = ?', [id], (err, results) => {
+    if (err) {
+      console.error('Error getting todo from the database: ', err);
+      res.status(500).json({ error: 'Failed to get todo' });
+    } else {
+      if (results.length === 0) {
+        res.status(404).json({ error: 'Todo not found' });
+      } else {
+        res.status(200).json(results[0]);
+      }
+    }
+  });
+});
+
+  // PUT /todos/:id - Update a todo
   app.put('/:id', (req, res) => {
     const { id } = req.params;
     const { title, content, completed } = req.body;

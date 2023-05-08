@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const TodoList = () => {
@@ -34,7 +35,9 @@ const TodoList = () => {
       <ul>
         {pendingTodos.map((todo) => (
           <li key={todo.id} style={{ textDecoration: 'none' }}>
-            <h3>{todo.title}</h3>
+            <Link to={`/todos/${todo.id}`}>
+              <h3>{todo.title}</h3>
+            </Link>
             <p>{todo.content}</p>
             <input
               type="checkbox"
