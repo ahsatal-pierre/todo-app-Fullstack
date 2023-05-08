@@ -27,7 +27,8 @@ const TodoDetails = () => {
     <div>
       <h1>{todo.title}</h1>
       <p>{todo.content}</p>
-      <p>Status: {todo.completed ? 'Done' : 'Pending'}</p>
+      <p>{todo.details}</p>
+      {/* <p>Status: {todo.completed ? 'Done' : 'Pending'}</p> */}
     </div>
   );
 };

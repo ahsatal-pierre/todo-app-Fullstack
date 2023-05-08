@@ -113,6 +113,36 @@ app.get('/todos/:id', (req, res) => {
     );
   });
 
+  // POST /todos - Create a new todo
+  app.post('/todos', (req, res) => {
+    const { title, content, details } = req.body;
+  
+    connection.query(
+      'INSERT INTO todos (title, content, details) VALUES (?, ?, ?)',
+      [title, content, details],
+      (err, results) => {
+        if (err) {
+          console.error('Error creating todo in the database: ', err);
+          res.status(500).json({ error: 'Failed to create todo' });
+        } else {
+          const insertedId = results.insertId;
+          connection.query(
+            'SELECT * FROM todos WHERE id = ?',
+            [insertedId],
+            (err, todo) => {
+              if (err) {
+                console.error('Error fetching todo from the database: ', err);
+                res.status(500).json({ error: 'Failed to fetch todo' });
+              } else {
+                res.status(201).json(todo[0]);
+              }
+            }
+          );
+        }
+      }
+    );
+  });
+
 
 
 // Start the server

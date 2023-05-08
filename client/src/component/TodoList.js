@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import TodoAdd from './TodoAdd';
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -20,6 +21,13 @@ const TodoList = () => {
       });
   };
 
+/*   const handleTodoAdded = () => {
+    fetchTodos();
+  }; */
+  const handleTodoAdded = (newTodo) => {
+    setTodos((prevTodos) => [newTodo, ...prevTodos]);
+  };
+  
 
   const handleTodoStateChanged = async (id, completed) => {
     await axios.put(`http://localhost:5000/${id}`, { completed: !completed });
@@ -32,6 +40,7 @@ const TodoList = () => {
   return (
     <div>
       <h1>TODO List</h1>
+      <TodoAdd onTodoAdded={handleTodoAdded} />
       <ul>
         {pendingTodos.map((todo) => (
           <li key={todo.id} style={{ textDecoration: 'none' }}>
