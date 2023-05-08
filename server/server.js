@@ -102,16 +102,19 @@ app.get('/todos/:id', (req, res) => {
     connection.query(
       'UPDATE todos SET completed = ? WHERE id = ?',
       [completed, id],
-      (err) => {
+      (err, result) => {
         if (err) {
           console.error('Error updating todo in the database: ', err);
           res.status(500).json({ error: 'Failed to update todo' });
+        } else if (result.affectedRows === 0) {
+          res.status(404).json({ error: 'Todo not found' });
         } else {
           res.status(200).json({ message: 'Todo updated successfully' });
         }
       }
     );
   });
+  
 
   // POST /todos - Create a new todo
   app.post('/todos', (req, res) => {
@@ -149,3 +152,5 @@ app.get('/todos/:id', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
+
+module.exports = app;
