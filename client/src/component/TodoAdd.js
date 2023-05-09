@@ -35,7 +35,7 @@ const TodoAdd = ({ onTodoAdded }) => {
     };
 
     axios
-      .post('http://localhost:5000/todos', newTodo)
+      .post('http://localhost:5001/todos', newTodo)
       .then((response) => {
         onTodoAdded(response.data);
         console.log("response.data:" , response.data)
