@@ -9,8 +9,29 @@ textarea {
     vertical-align:middle;
 }
 
+.cadreTimer {
+    margin: 20px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.timer {
+    text-align: center;
+}
+
+.timerbutton {
+    display: flex;
+    justify-content: center;
+    align-items: space-around;
+}
+
 li {
     list-style-type: none;
+}
+
+.formTitle {
+    margin-top: 50px;
+    text-align: center;
 }
 
 .formBox {

@@ -51,12 +51,16 @@ const TodoAdd = ({ onTodoAdded }) => {
   };
 
   return (
+    <>
+      <div className='formTitle'>{"Add a new task: "}</div>  
     <form className='formBox' onSubmit={handleSubmit}>
+
       <input className='form' type="text" placeholder="Title - required" value={title} onChange={handleTitleChange} required />
       <textarea className='form' placeholder="Content" value={content} onChange={handleContentChange} />
       <textarea className='form' placeholder="Details" value={details} onChange={handleDetailsChange} />
       <button className='formButton' type="submit">Add Todo</button>
     </form>
+    </>
   );
 };
 
