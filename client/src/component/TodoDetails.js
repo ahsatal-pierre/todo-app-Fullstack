@@ -12,7 +12,7 @@ const TodoDetails = () => {
 
   const fetchTodo = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/todos/${id}`);
+      const response = await axios.get(`http://localhost:5001/todos/${id}`);
       setTodo(response.data);
     } catch (error) {
       console.error('Error fetching todo:', error);

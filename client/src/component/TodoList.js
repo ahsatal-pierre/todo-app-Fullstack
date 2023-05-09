@@ -12,7 +12,7 @@ const TodoList = () => {
 
   const fetchTodos = () => {
     axios
-      .get('http://localhost:5000/todos')
+      .get('http://localhost:5001/todos')
       .then((response) => {
         setTodos(response.data);
       })
@@ -30,7 +30,7 @@ const TodoList = () => {
   
 
   const handleTodoStateChanged = async (id, completed) => {
-    await axios.put(`http://localhost:5000/${id}`, { completed: !completed });
+    await axios.put(`http://localhost:5001/${id}`, { completed: !completed });
     fetchTodos();
   };
 
