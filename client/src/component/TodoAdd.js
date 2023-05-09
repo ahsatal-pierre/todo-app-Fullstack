@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../component.css';
 
 const TodoAdd = ({ onTodoAdded }) => {
   const [title, setTitle] = useState('');
@@ -50,11 +51,11 @@ const TodoAdd = ({ onTodoAdded }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Title - required" value={title} onChange={handleTitleChange} required />
-      <textarea placeholder="Content" value={content} onChange={handleContentChange} />
-      <textarea placeholder="Details" value={details} onChange={handleDetailsChange} />
-      <button type="submit">Add Todo</button>
+    <form className='formBox' onSubmit={handleSubmit}>
+      <input className='form' type="text" placeholder="Title - required" value={title} onChange={handleTitleChange} required />
+      <textarea className='form' placeholder="Content" value={content} onChange={handleContentChange} />
+      <textarea className='form' placeholder="Details" value={details} onChange={handleDetailsChange} />
+      <button className='formButton' type="submit">Add Todo</button>
     </form>
   );
 };

@@ -1,0 +1,22 @@
+.title {
+    text-align: center;
+}
+
+textarea {
+    resize: none;
+    text-align: center;
+    display:inline-block;
+    vertical-align:middle;
+}
+
+.formBox {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.form {
+    height: 50px;
+    padding: 0px;
+    border: 1px solid black;
+}

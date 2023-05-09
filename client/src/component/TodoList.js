@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import TodoAdd from './TodoAdd';
+import '../component.css';
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -39,7 +40,7 @@ const TodoList = () => {
 
   return (
     <div>
-      <h1>TODO List</h1>
+      <h1 className='title'>TODO List</h1>
       <TodoAdd onTodoAdded={handleTodoAdded} />
       <ul>
         {pendingTodos.map((todo) => (
