@@ -143,6 +143,19 @@ app.get('/todos/:id', (req, res) => {
     );
   });
 
+    // DELETE /todos/:id - Delete a todo
+    app.delete('/todos/:id', (req, res) => {
+      const { id } = req.params;
+    
+      connection.query('DELETE FROM todos WHERE id = ?', [id], (err) => {
+        if (err) {
+          console.error('Error deleting todo from the database: ', err);
+          res.status(500).json({ error: 'Failed to delete todo' });
+        } else {
+          res.status(200).json({ message: 'Todo deleted successfully' });
+        }
+      });
+    });
 
 
 // Start the server

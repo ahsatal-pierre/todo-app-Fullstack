@@ -65,6 +65,19 @@ app.post('/todos', (req, res) => {
   res.status(201).json(newTodo);
 });
 
+// DELETE /todos/:id - Delete a todo
+app.delete('/todos/:id', (req, res) => {
+  const { id } = req.params;
+  const index = todos.findIndex((todo) => todo.id === parseInt(id));
+  
+  if (index !== -1) {
+    todos.splice(index, 1);
+    res.status(200).json({ message: 'Todo deleted successfully' });
+  } else {
+    res.status(404).json({ error: 'Todo not found' });
+  }
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Mock server started on port ${PORT}`);
