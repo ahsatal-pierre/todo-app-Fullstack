@@ -38,3 +38,12 @@ textarea {
     margin-top: 20vh;
     text-align: center;
 }
+
+.todo-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.deleteButton {
+ margin-left: 20px;
+}

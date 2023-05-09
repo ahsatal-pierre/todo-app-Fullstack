@@ -35,6 +35,11 @@ const TodoList = () => {
     fetchTodos();
   };
 
+  const handleTodoDelete = async (id) => {
+    await axios.delete(`http://localhost:5001/todos/${id}`);
+    fetchTodos();
+  };
+
   const completedTodos = todos.filter((todo) => todo.completed);
   const pendingTodos = todos.filter((todo) => !todo.completed);
 
@@ -49,25 +54,31 @@ const TodoList = () => {
               <h3>{todo.title}</h3>
             </Link>
             <p>{todo.content}</p>
+            <div className='todo-actions'>
             <input
               type="checkbox"
               checked={todo.completed}
               onChange={() => handleTodoStateChanged(todo.id, todo.completed)}
             />
+
             <span>Pending</span>
+            <button className='deleteButton'  onClick={() => handleTodoDelete(todo.id)}>Delete</button>
+            </div>
           </li>
         ))}
         {completedTodos.map((todo) => (
-          <li key={todo.id} style={{ textDecoration: 'line-through' }}>
+          <><li key={todo.id} style={{ textDecoration: 'line-through' }}>
             <h3>{todo.title}</h3>
             <p>{todo.content}</p>
-            <input
-              type="checkbox"
-              checked={todo.completed}
-              onChange={() => handleTodoStateChanged(todo.id, todo.completed)}
-            />
-            <span>Done</span>
-          </li>
+
+          </li><div className='todo-actions'>
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => handleTodoStateChanged(todo.id, todo.completed)} />
+              <span>Done</span>
+              <button className='deleteButton' onClick={() => handleTodoDelete(todo.id)}>Delete</button>
+            </div></>
         ))}
       </ul>
     </div>
