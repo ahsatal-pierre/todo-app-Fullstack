@@ -6,7 +6,6 @@ const TodoAdd = ({ onTodoAdded }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [details, setDetails] = useState('');
-//  const [completed, setCompleted] = useState(false);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -20,9 +19,6 @@ const TodoAdd = ({ onTodoAdded }) => {
     setDetails(e.target.value);
   };
 
-/*    const handleCompletedChange = (e) => {
-    setCompleted(e.target.checked);
-  };  */
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,8 +27,7 @@ const TodoAdd = ({ onTodoAdded }) => {
       title: title,
       content: content,
       details: details, 
-   //   completed: false
-   //   completed: completed
+
     };
 
     axios
@@ -43,7 +38,6 @@ const TodoAdd = ({ onTodoAdded }) => {
         setTitle('');
         setContent('');
         setDetails('');
-    //    setCompleted(false);
       })
       .catch((error) => {
         console.error('Error adding todo:', error);
@@ -51,7 +45,7 @@ const TodoAdd = ({ onTodoAdded }) => {
   };
 
   return (
-    <>
+    <div className='addingTodo'>
       <div className='formTitle'>{"Add a new task: "}</div>  
     <form className='formBox' onSubmit={handleSubmit}>
 
@@ -60,7 +54,7 @@ const TodoAdd = ({ onTodoAdded }) => {
       <textarea className='form' placeholder="Details" value={details} onChange={handleDetailsChange} />
       <button className='formButton' type="submit">Add Todo</button>
     </form>
-    </>
+    </div>
   );
 };
 

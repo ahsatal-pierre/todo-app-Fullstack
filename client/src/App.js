@@ -11,7 +11,6 @@ const App = () => {
       <Timer/>
       <Routes>
       <Route path="/" element={<TodoList />} />
-      
       <Route path="/todos/:id" element={<TodoDetails />} />
       </Routes>
     </Router>

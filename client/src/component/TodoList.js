@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import TodoAdd from './TodoAdd';
-//import Timer from './Timer';
 import '../component.css';
 
 const TodoList = () => {
@@ -23,9 +22,6 @@ const TodoList = () => {
       });
   };
 
-/*   const handleTodoAdded = () => {
-    fetchTodos();
-  }; */
   const handleTodoAdded = (newTodo) => {
     setTodos((prevTodos) => [newTodo, ...prevTodos]);
   };
@@ -46,10 +42,10 @@ const TodoList = () => {
 
   return (
     <div>
-      <h1 className='title'>TODO List</h1>
-     
-     {/* <Timer /> */}
+   
+        
       <TodoAdd onTodoAdded={handleTodoAdded} />
+      <h1 className='title'>TODO List</h1>
       <ul className='list'>
         {pendingTodos.map((todo) => (
           <li key={todo.id} style={{ textDecoration: 'none' }}>

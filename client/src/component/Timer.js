@@ -60,12 +60,15 @@ const Timer = () => {
 
   return (
     <div className='cadreTimer'>
-      <div className='timer'>
-        Timer: {`${formatTime(time.hours)}:${formatTime(time.minutes)}:${formatTime(
+      <div className='timerClock'>
+        <strong>Timer:</strong> <br /> {`${formatTime(time.hours)}:${formatTime(time.minutes)}:${formatTime(
           time.seconds
         )}`}
       </div>
       <br />
+
+
+
       <div className='timer'>
         <label>
           Hours:
@@ -80,6 +83,8 @@ const Timer = () => {
             }
           />
         </label>
+
+
         <label>
           Minutes:
           <input
@@ -93,6 +98,8 @@ const Timer = () => {
             }
           />
         </label>
+
+
         <label>
           Seconds:
           <input
@@ -107,6 +114,10 @@ const Timer = () => {
           />
         </label>
       </div>
+
+
+
+
       <br />
       <div className='timerbutton'>
         <button onClick={startCountdown}>Start</button>

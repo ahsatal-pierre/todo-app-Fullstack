@@ -15,9 +15,36 @@ textarea {
     padding: 10px;
 }
 
-.timer {
+.timerClock {
     text-align: center;
 }
+
+/* .timer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  @media screen and (max-width: 600px) {
+    .timer {
+      flex-wrap: nowrap;
+    }
+    .timer label {
+      display: block;
+    }
+  } */
+
+
+  .timer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .timer label input {
+    max-width: 10vw;
+    margin: 10px;
+  }
 
 .timerbutton {
     display: flex;
@@ -27,14 +54,22 @@ textarea {
 
 .goodJob {
     text-align: center;
+    font-size: large;
+    font-weight: 500;
 }
 
 li {
     list-style-type: none;
 }
 
+.addingTodo {
+    border: 1px solid black;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
 .formTitle {
-    margin-top: 50px;
+    margin-top: 10px;
     text-align: center;
 }
 
