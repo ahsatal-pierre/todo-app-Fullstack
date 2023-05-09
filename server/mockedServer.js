@@ -1,3 +1,5 @@
+const todos = require('./data.json');
+
 const express = require('express');
 const cors = require('cors');
 
@@ -15,13 +17,13 @@ app.use((req, res, next) => {
   next();
 });
 
-// Mocked data
+/* // Mocked data moved to data.json
 const todos = [
   { id: 1, title: 'Todo 1', content: 'user story 1', completed: false },
   { id: 2, title: 'Todo 2', content: 'user story 2', completed: true },
   { id: 3, title: 'Todo 3', content: 'user story 3', completed: false },
   { id: 4, title: 'Todo 4', content: 'user story 4', completed: true },
-];
+]; */
 
 // Routes
 // GET /todos - Get all todos
@@ -41,7 +43,7 @@ app.get('/todos/:id', (req, res) => {
 });
 
 // PUT /todos/:id - Update a todo
-app.put('/:id', (req, res) => {
+app.put('/todos/:id', (req, res) => {
   const { id } = req.params;
   const { title, content, completed } = req.body;
   const todo = todos.find((todo) => todo.id === Number(id));

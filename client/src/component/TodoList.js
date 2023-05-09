@@ -30,7 +30,7 @@ const TodoList = () => {
   
 
   const handleTodoStateChanged = async (id, completed) => {
-    await axios.put(`http://localhost:5001/${id}`, { completed: !completed });
+    await axios.put(`http://localhost:5001/todos/${id}`, { completed: !completed });
     fetchTodos();
   };
 
