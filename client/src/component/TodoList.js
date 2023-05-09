@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TodoAdd from './TodoAdd';
-import Timer from './Timer';
+import TodoDetails from './TodoDetails';
 import '../component.css';
 
 const TodoList = () => {
@@ -47,8 +47,6 @@ const TodoList = () => {
 
   return (
     <div>
-      <h1 className='title'>TODO List</h1>
-      <Timer />
       <TodoAdd onTodoAdded={handleTodoAdded} />
       <ul className='list'>
         {pendingTodos.map((todo) => (

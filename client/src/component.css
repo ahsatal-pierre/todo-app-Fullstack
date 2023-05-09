@@ -64,8 +64,11 @@ li {
 }
 
 .selectedTodo {
-    margin-top: 20vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     text-align: center;
+    margin: 100px;
 }
 
 .todo-actions {
