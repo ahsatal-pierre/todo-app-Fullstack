@@ -9,6 +9,10 @@ textarea {
     vertical-align:middle;
 }
 
+li {
+    list-style-type: none;
+}
+
 .formBox {
     display: flex;
     justify-content: center;
