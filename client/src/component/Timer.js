@@ -4,6 +4,7 @@ import '../component.css';
 const Timer = () => {
   const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
   const [isRunning, setIsRunning] = useState(false);
+  const [isTimeUp, setIsTimeUp] = useState(false); // New state for tracking timer completion
 
   useEffect(() => {
     let interval;
@@ -16,7 +17,7 @@ const Timer = () => {
           if (hours === 0 && minutes === 0 && seconds === 0) {
             clearInterval(interval);
             setIsRunning(false);
-            // Perform any desired action when the countdown reaches zero
+            setIsTimeUp(true); // Set isTimeUp to true when the timer reaches zero
           }
 
           if (seconds > 0) {
@@ -45,6 +46,7 @@ const Timer = () => {
     if (isRunning) {
       setIsRunning(false);
       setTime({ hours: 0, minutes: 0, seconds: 0 });
+      setIsTimeUp(false); // Reset isTimeUp when stopping the timer
     }
   };
 
@@ -58,18 +60,17 @@ const Timer = () => {
 
   return (
     <div className='cadreTimer'>
- 
-     <div className='timer'>
-     Timer: {`${formatTime(time.hours)}:${formatTime(time.minutes)}:${formatTime(
+      <div className='timer'>
+        Timer: {`${formatTime(time.hours)}:${formatTime(time.minutes)}:${formatTime(
           time.seconds
         )}`}
       </div>
-      <br></br>
+      <br />
       <div className='timer'>
         <label>
           Hours:
           <input
-            type="number"
+            type='number'
             value={time.hours}
             onChange={(e) =>
               setTime((prevTime) => ({
@@ -82,7 +83,7 @@ const Timer = () => {
         <label>
           Minutes:
           <input
-            type="number"
+            type='number'
             value={time.minutes}
             onChange={(e) =>
               setTime((prevTime) => ({
@@ -95,7 +96,7 @@ const Timer = () => {
         <label>
           Seconds:
           <input
-            type="number"
+            type='number'
             value={time.seconds}
             onChange={(e) =>
               setTime((prevTime) => ({
@@ -106,15 +107,16 @@ const Timer = () => {
           />
         </label>
       </div>
-      <br></br>
+      <br />
       <div className='timerbutton'>
         <button onClick={startCountdown}>Start</button>
         <button onClick={stopCountdown}>Stop</button>
         <button onClick={pauseCountdown}>Pause</button>
       </div>
 
-    </div>
-  );
+      {isTimeUp && <div className='goodJob'>Good job!</div>} 
+</div>
+);
 };
 
 export default Timer;

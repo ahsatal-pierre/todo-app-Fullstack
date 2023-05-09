@@ -25,6 +25,10 @@ textarea {
     align-items: space-around;
 }
 
+.goodjob {
+    text-align: center;
+}
+
 li {
     list-style-type: none;
 }

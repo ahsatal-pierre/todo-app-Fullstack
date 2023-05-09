@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import TodoAdd from './TodoAdd';
 import Timer from './Timer';
@@ -23,13 +22,9 @@ const TodoList = () => {
       });
   };
 
-/*   const handleTodoAdded = () => {
-    fetchTodos();
-  }; */
   const handleTodoAdded = (newTodo) => {
     setTodos((prevTodos) => [newTodo, ...prevTodos]);
   };
-  
 
   const handleTodoStateChanged = async (id, completed) => {
     await axios.put(`http://localhost:5001/todos/${id}`, { completed: !completed });
@@ -44,44 +39,49 @@ const TodoList = () => {
   const completedTodos = todos.filter((todo) => todo.completed);
   const pendingTodos = todos.filter((todo) => !todo.completed);
 
+  const [expandedTodoId, setExpandedTodoId] = useState(null);
+
+  const handleTodoClick = (id) => {
+    setExpandedTodoId(id === expandedTodoId ? null : id);
+  };
+
   return (
     <div>
       <h1 className='title'>TODO List</h1>
-     
-     <Timer />
+      <Timer />
       <TodoAdd onTodoAdded={handleTodoAdded} />
       <ul className='list'>
         {pendingTodos.map((todo) => (
           <li key={todo.id} style={{ textDecoration: 'none' }}>
-            <Link to={`/todos/${todo.id}`}>
-              <h3>{todo.title}</h3>
-            </Link>
-            <p>{todo.content}</p>
+            <h3 onClick={() => handleTodoClick(todo.id)}>{todo.title}</h3>
+            {expandedTodoId === todo.id && <p>{todo.content}</p>}
             <div className='todo-actions'>
-            <input
-              type="checkbox"
-              checked={todo.completed}
-              onChange={() => handleTodoStateChanged(todo.id, todo.completed)}
-            />
-
-            <span>Pending</span>
-            <button className='deleteButton'  onClick={() => handleTodoDelete(todo.id)}>Delete</button>
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => handleTodoStateChanged(todo.id, todo.completed)}
+              />
+              <span>Pending</span>
+              <button className='deleteButton' onClick={() => handleTodoDelete(todo.id)}>Delete</button>
             </div>
           </li>
         ))}
         {completedTodos.map((todo) => (
-          <><li key={todo.id} style={{ textDecoration: 'line-through' }}>
-            <h3>{todo.title}</h3>
-            <p>{todo.content}</p>
-
-          </li><div className='todo-actions'>
+          <>
+            <li key={todo.id} style={{ textDecoration: 'line-through' }}>
+              <h3 onClick={() => handleTodoClick(todo.id)}>{todo.title}</h3>
+              {expandedTodoId === todo.id && <p>{todo.content}</p>}
+            </li>
+            <div className='todo-actions'>
               <input
                 type="checkbox"
                 checked={todo.completed}
-                onChange={() => handleTodoStateChanged(todo.id, todo.completed)} />
+                onChange={() => handleTodoStateChanged(todo.id, todo.completed)}
+              />
               <span>Done</span>
               <button className='deleteButton' onClick={() => handleTodoDelete(todo.id)}>Delete</button>
-            </div></>
+            </div>
+          </>
         ))}
       </ul>
     </div>
