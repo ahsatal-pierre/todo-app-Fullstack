@@ -18,5 +18,23 @@ textarea {
 .form {
     height: 50px;
     padding: 0px;
-    border: 1px solid black;
+    border: 1px solid darkgrey;
+    background-color: #ccffff;
+}
+
+.formButton {
+    background-color: #66ffff;
+}
+
+.list {
+    text-align: center;
+    margin: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 0px;
+}
+
+.selectedTodo {
+    margin-top: 20vh;
+    text-align: center;
 }

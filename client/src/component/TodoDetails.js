@@ -25,7 +25,7 @@ const TodoDetails = () => {
   }
 
   return (
-    <div>
+    <div className='selectedTodo'>
       <h1>{todo.title}</h1>
       <p>{todo.content}</p>
       <p>{todo.details}</p>

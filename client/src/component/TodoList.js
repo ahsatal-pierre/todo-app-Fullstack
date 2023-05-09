@@ -42,7 +42,7 @@ const TodoList = () => {
     <div>
       <h1 className='title'>TODO List</h1>
       <TodoAdd onTodoAdded={handleTodoAdded} />
-      <ul>
+      <ul className='list'>
         {pendingTodos.map((todo) => (
           <li key={todo.id} style={{ textDecoration: 'none' }}>
             <Link to={`/todos/${todo.id}`}>
