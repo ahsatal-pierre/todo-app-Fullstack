@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../component.css';
 
 const TodoDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [todo, setTodo] = useState(null);
 
   useEffect(() => {
@@ -20,6 +21,10 @@ const TodoDetails = () => {
     }
   };
 
+  const handleGoBack = () => {
+    navigate('/'); 
+  };
+
   if (!todo) {
     return <div>Loading...</div>;
   }
@@ -29,6 +34,7 @@ const TodoDetails = () => {
       <h1>{todo.title}</h1>
       <p>{todo.content}</p>
       <p>{todo.details}</p>
+      <button onClick={handleGoBack}>Back</button>
       {/* <p>Status: {todo.completed ? 'Done' : 'Pending'}</p> */}
     </div>
   );
