@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import TodoAdd from './TodoAdd';
-import Timer from './Timer';
+//import Timer from './Timer';
 import '../component.css';
 
 const TodoList = () => {
@@ -48,7 +48,7 @@ const TodoList = () => {
     <div>
       <h1 className='title'>TODO List</h1>
      
-     <Timer />
+     {/* <Timer /> */}
       <TodoAdd onTodoAdded={handleTodoAdded} />
       <ul className='list'>
         {pendingTodos.map((todo) => (
