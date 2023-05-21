@@ -4,7 +4,7 @@ import '../component.css';
 const Timer = () => {
   const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
   const [isRunning, setIsRunning] = useState(false);
-  const [isTimeUp, setIsTimeUp] = useState(false); // New state for tracking timer completion
+  const [isTimeUp, setIsTimeUp] = useState(false); 
 
   useEffect(() => {
     let interval;
@@ -17,7 +17,7 @@ const Timer = () => {
           if (hours === 0 && minutes === 0 && seconds === 0) {
             clearInterval(interval);
             setIsRunning(false);
-            setIsTimeUp(true); // Set isTimeUp to true when the timer reaches zero
+            setIsTimeUp(true); 
           }
 
           if (seconds > 0) {
@@ -46,7 +46,7 @@ const Timer = () => {
     if (isRunning) {
       setIsRunning(false);
       setTime({ hours: 0, minutes: 0, seconds: 0 });
-      setIsTimeUp(false); // Reset isTimeUp when stopping the timer
+      setIsTimeUp(false); 
     }
   };
 
