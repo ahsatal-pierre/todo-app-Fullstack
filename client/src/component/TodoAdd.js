@@ -19,16 +19,17 @@ const TodoAdd = ({ onTodoAdded }) => {
     setDetails(e.target.value);
   };
 
-
+let counter = 6; 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     const newTodo = {
       title: title,
       content: content,
       details: details, 
-
+      id: counter,
     };
+  counter += 1
 
     axios
       .post('http://localhost:5001/todos', newTodo)
