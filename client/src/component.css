@@ -19,22 +19,6 @@ textarea {
     text-align: center;
 }
 
-/* .timer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-  }
-
-  @media screen and (max-width: 600px) {
-    .timer {
-      flex-wrap: nowrap;
-    }
-    .timer label {
-      display: block;
-    }
-  } */
-
-
   .timer {
     display: flex;
     flex-wrap: wrap;
